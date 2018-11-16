@@ -1,6 +1,6 @@
- <html>
- 	<title></title>
- 	<body>
+<html>
+	<title></title>
+	<body>
 	<?php 
 		echo "Hallo Semua, Aku Fakhri";
 		echo "HAI SEMUA";
@@ -12,8 +12,9 @@
 		echo "string";
 		echo "hahahaah";
 		echo "mater banget";
+		echo "Usman Jelek";
 	 ?>
- 		
- 		<h1>KALIMAT CUY</h1>
- 	</body>
- </html>
+	 	<h1>KALIMAT CUY</h1>
+		<h1>HOHOHOHOHOHO</h1>
+	</body>
+</html>
