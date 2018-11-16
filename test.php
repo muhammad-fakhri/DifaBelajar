@@ -6,4 +6,6 @@
 		echo "Kalian Jelek !!!!";
 	}
 	echo "Halo";
+	echo "string";
+	echo "hahahaah";
  ?>
