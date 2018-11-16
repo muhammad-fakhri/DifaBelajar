@@ -1,105 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+
 <head>
-	<title>DOIT-Daily Expense Management</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Doit Login</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
+
 <body>
-	<br/>
-	<!-- cek pesan notifikasi -->
-	<?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan'] == "gagal"){
-			echo "Login gagal! username dan password salah!";
-		}else if($_GET['pesan'] == "logout"){
-			echo "Anda telah berhasil logout";
-		}else if($_GET['pesan'] == "belum_login"){
-			echo "Anda harus login untuk mengakses halaman admin";
-		}
-		else if($_GET['pesan'] == "register"){
-			echo "Register Berhasil";
-		}
-	}
-	?>
-	<br/>
-	<br/>
-<!--Form Login-->
-<div class="container white z-depth-2">
-	<ul class="tabs teal">
-		<li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
-		<li class="tab col s3"><a class="white-text" href="#register">register</a></li>
-	</ul>
-	<div id="login" class="col s12">
-		<form method="post" action="cek_login.php">
-		<form class="col s12">
-			<div class="form-container">
-				<h3 class="teal-text">Hi selamat datang kembali di DOIT</h3>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="username" type="text" class="validate">
-						<label for="username">Username</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="password" type="password" class="validate">
-						<label for="password">Password</label>
-					</div>
-				</div>
-				<br>
-				<center>
-					<button class="btn waves-effect waves-light teal" type="submit" name="login" value="login">Login</button>
-					<br>
-					<br>
-					<a href="">Forgotten password?</a>
-				</center>
-			</div>
-		</form>
-	</div>
- <!--Form Register-->
-	<div id="register" class="col s12">
-		<form method="post" action="register.php">
-		<form class="col s12">
-			<div class="form-container">
-				<h3 class="teal-text">Welcome</h3>
-				<div class="row">
-					<div class="input-field col s6">
-						<input name="username" type="text" class="validate">
-						<label for="username">username</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="email" type="email" class="validate">
-						<label for="email">Masukkan Email</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="email_confirm" type="email" class="validate">
-						<label for="email-confirm">Konfirmasi Email</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="password" type="password" class="validate">
-						<label for="password">Password</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="password_confirm" type="password" class="validate">
-						<label for="password-confirm">Konfirmasi Password</label>
-					</div>
-				</div>
-				<center>
-					<input type="submit" value="Register">
-				</center>
-			</div>
-		</form>
-	</div>
+
+  <!-- cek apakah sudah login -->
+
+  <div class="form">
+
+  <ul class="tab-group">
+    <li class="tab active"><a href="#signup">Sign Up</a></li>
+    <li class="tab"><a href="#login">Log In</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="signup">
+      <h1>Let's Join Our Journey</h1>
+<h2>
+  <?php 
+  session_start();
+  if(isset($_GET['pesan']))
+  {
+    if($_GET['pesan'] == "belum_login"){
+      echo "You must login berfore accessing dashboard!";
+    }
+    else if($_GET['pesan'] == "logout"){echo "You are log out successfully";}
+  }
+  ?>
+</h2>
+      <form action="register.php" method="post">
+
+        <div class="top-row">
+          <div class="field-wrap">
+            <label>
+                First Name<span class="req">*</span>
+              </label>
+            <input type="text" name="first_name" required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <label>
+                Last Name<span class="req">*</span>
+              </label>
+            <input type="text" name="last_name" required autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label>
+              Email Address<span class="req">*</span>
+            </label>
+          <input type="email" name="email" required autocomplete="off" />
+        </div>
+
+        <div class="field-wrap">
+          <label>
+              Set A Password<span class="req">*</span>
+            </label>
+          <input type="password" name="password" required autocomplete="off" />
+        </div>
+
+        <button type="submit" class="button button-block" />Sign Up</button>
+
+      </form>
+
+    </div>
+
+    <div id="login">
+      <h1>Welcome Back!</h1>
+
+      <form action="cek_login.php" method="post">
+
+        <div class="field-wrap">
+          <label>
+              Email Address<span class="req">*</span>
+            </label>
+          <input type="email" name="email" required autocomplete="off" />
+        </div>
+
+        <div class="field-wrap">
+          <label>
+              Password<span class="req">*</span>
+            </label>
+          <input type="password" name="password" required autocomplete="off" />
+        </div>
+
+        <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+        <button class="button button-block" />Log In</button>
+
+      </form>
+
+    </div>
+
+  </div>
+  <!-- tab-content -->
+
 </div>
+<!-- /form -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
 </body>
+
 </html>

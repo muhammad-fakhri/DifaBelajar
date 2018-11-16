@@ -6,19 +6,23 @@ session_start();
 include 'koneksi.php';
 
 // menangkap data yang dikirim dari form
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
 // menyeleksi data admin dengan username dan password yang sesuai
-$data = mysqli_query($koneksi,"select * from admin where username='$username' and password='$password'");
+$data = mysqli_query($koneksi,"select * from admin where email='$email' and password='$password'");
+$row = mysqli_fetch_array($data);
 
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($data);
 
 if($cek > 0){
-	$_SESSION['username'] = $username;
 	$_SESSION['status'] = "login";
-	header("location:admin/index.php?Login Berhasil");
+	$_SESSION['first_name'] = $row['first_name'];
+	$_SESSION['last_name'] = $row['last_name'];
+	$_SESSION['email'] = $row['email'];
+	$_SESSION['password'] = $row['password'];
+	header("location:dashboard.php?Login Success");
 }else{
 	header("location:index.php?pesan=gagal");
 }
